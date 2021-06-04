@@ -1,8 +1,5 @@
 name: Design Pattern Tutorial - Test integration
 
-variables:
-  enviromentTest: DesignPatternTutorial
-  
 on:
   push:
     branches: [ main ]
@@ -10,9 +7,22 @@ on:
     branches: [ main ]
 
 jobs:
-  test:
+  build:
+
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        dotnet-version: ['2.1.X']
+
     steps:
-    - name: Test
-      run: 
-        dotnet test ${enviromentTest}Test/ --no-build --verbosity normal
+      - uses: actions/checkout@v2
+      - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
+        uses: actions/setup-dotnet@v1.7.2
+        with:
+          dotnet-version: ${{ matrix.dotnet-version }}
+      - name: Install dependencies
+        run: dotnet restore DesignPatternsTutorialTest/
+      - name: Build
+        run: dotnet build DesignPatternsTutorialTest/ --configuration Release --no-restore
+      - name: Test
+        run: dotnet test DesignPatternsTutorialTest/ --no-restore --verbosity normal
