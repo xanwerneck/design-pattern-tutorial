@@ -33,5 +33,8 @@ msbuild.log
 msbuild.err
 msbuild.wrn
 
-# Visual Studio 2015
+# Visual Studio 2017
 .vs/
+
+# Visual Studio Code
+.vscode/
