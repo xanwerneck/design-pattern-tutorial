@@ -1,5 +1,8 @@
 name: Design Pattern Tutorial - Test integration
 
+variables:
+  enviromentTest: DesignPatternTutorial
+  
 on:
   push:
     branches: [ main ]
@@ -8,10 +11,8 @@ on:
 
 jobs:
   test:
-
     runs-on: ubuntu-latest
-
     steps:
     - name: Test
       run: 
-        dotnet test --no-build --verbosity normal
+        dotnet test ${enviromentTest}Test/ --no-build --verbosity normal
