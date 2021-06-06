@@ -13,6 +13,7 @@ Looking to receive any feedback about code and suggestions.
 ## Design Patterns (Behavior)
 
 - Strategy
+- Chain of responsibility
 
 To learn all about design patterns my suggestion is 
 the [Design Patterns: Elements of Reusable Object-Oriented Software] wrote by [Gang of Four]
